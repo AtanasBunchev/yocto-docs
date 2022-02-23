@@ -6,7 +6,7 @@ SOURCEDIR     = .
 BUILDDIR      = _build
 TRANSITIONS   = $(sort $(patsubst $(SOURCEDIR)/transition/%/index.rst,%,$(wildcard $(SOURCEDIR)/transition/*/index.rst)))
 
-.PHONY: Makefile publish transition $(TRANSITIONS)
+.PHONY: Makefile publish transition clean $(TRANSITIONS)
 
 transition: $(TRANSITIONS)
 
@@ -20,3 +20,6 @@ publish: transition
 		mkdir -p $(BUILDDIR)/final/$$ver ;\
 		cp -r $(BUILDDIR)/$$ver/html/* $(BUILDDIR)/final/$$ver/ ;\
 	done
+
+clean:
+	@rm -rf $(BUILDDIR)
