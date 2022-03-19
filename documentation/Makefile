@@ -8,9 +8,16 @@ TRANSITIONS   = $(sort $(patsubst $(SOURCEDIR)/transition/%/index.rst,%,$(wildca
 
 .PHONY: Makefile publish transition clean $(TRANSITIONS)
 
+sphinx-static/switchers.js.in:
+	git checkout master sphinx-static/switchers.js.in
+
+set_versions.py:
+	git checkout master set_versions.py
+
 transition: $(TRANSITIONS)
 
-$(TRANSITIONS):
+$(TRANSITIONS): sphinx-static/switchers.js.in set_versions.py
+	./set_versions.py $@
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)"/transition/$@/ "$(BUILDDIR)"/$@ $(SPHINXOPTS) $(O) -c "$(SOURCEDIR)"
 
 publish: transition

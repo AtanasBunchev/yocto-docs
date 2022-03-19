@@ -1,2 +1,3 @@
 _build/
 sphinx/__pycache__/
+sphinx-static/switchers.js
