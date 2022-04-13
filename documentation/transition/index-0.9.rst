@@ -9,11 +9,11 @@ Yocto Project @VER@ Documentation
    :maxdepth: 1
    :caption: Introduction and Overview
 
-   Quick Start Guide <https://www.yoctoproject.org/docs/@VER@/yocto-quick-start/yocto-project-qs.html>
+   Quick Start Guide <https://docs.yoctoproject.org/@VER@/yocto-quick-start/yocto-project-qs.html>
 
 .. toctree::
    :maxdepth: 1
    :caption: Manuals
 
-   Reference Manual <https://www.yoctoproject.org/docs/@VER@/poky-ref-manual/poky-ref-manual.html>
+   Reference Manual <https://docs.yoctoproject.org/@VER@/poky-ref-manual/poky-ref-manual.html>
 
