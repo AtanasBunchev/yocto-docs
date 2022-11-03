@@ -426,6 +426,29 @@ command line:
    networking that does not need root access but also is not as easy to
    use or comprehensive as the default.
 
+   Using ``slirp`` by default will forward the guest machine's
+   22 and 23 TCP ports to host machine's 2222 and 2323 ports
+   (or the next free ports). Specific forwarding rules can be configured
+   by setting ``QB_SLIRP_OPT`` as environment variable or in ``qemuboot.conf``
+   in the :term:`Build Directory` ``deploy/image`` directory.
+   Examples::
+
+      QB_SLIRP_OPT="-netdev user,id=net0,hostfwd=tcp::8080-:80"
+
+      QB_SLIRP_OPT="-netdev user,id=net0,hostfwd=tcp::8080-:80,hostfwd=tcp::2222-:22"
+
+   The first example forwards TCP port 80 from the emulated system to
+   port 8080 (or the next free port) on the host system,
+   allowing access to http server running in QEMU from
+   ``http://<host ip>:8080/``.
+
+   The second example does the same, but also forwards TCP port 22 on the
+   guest system to 2222 (or the next free port) on the host system,
+   allowing ssh access to the emulated system using
+   ``ssh -P 2222 <user>@<host ip>``.
+
+   Keep in mind that proper configuration of firewall software is required.
+
 -  ``kvm``: Enables KVM when running "qemux86" or "qemux86-64" QEMU
    architectures. For KVM to work, all the following conditions must be
    met:
